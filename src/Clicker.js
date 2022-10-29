@@ -1,44 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Typography, Button } from "@mui/material";
 
 const Clicker = ({
   number,
   playerScore,
   setPlayerScore,
-  isFull,
   setIsFull,
-  playerOneFull,
-  playerTwoFull,
+  buttonChangeView,
+  resetClicker,
+  setResetClicker,
+  rowClosed,
+  setRowClosed,
 }) => {
   const [clickCount, setClickCount] = useState(0);
 
-  const buttonChangeView = (clickCount) => {
-    if (playerOneFull && playerTwoFull) {
-      return "closed";
-    }
-    switch (clickCount) {
-      case -1:
-        return "closed";
-      case 0:
-        return "O";
-      case 1:
-        return "!";
-      case 2:
-        return "!!";
-      case 3:
-        return "!!!";
-      default:
-        return "!!!";
-    }
-  };
-
   const handleClick = () => {
-    setClickCount(clickCount + 1);
-    if (clickCount >= 3) {
+    if (rowClosed) {
+      return null;
+    }
+    if (clickCount === 2) {
       setIsFull(true);
+    }
+
+    if (!rowClosed && clickCount > 2) {
       setPlayerScore(playerScore + number);
     }
+
+    setClickCount(clickCount + 1);
   };
+
+  useEffect(() => {
+    if (resetClicker) {
+      setClickCount(0);
+      setResetClicker(false);
+      setRowClosed(false);
+    }
+  }, [resetClicker, setResetClicker, setRowClosed]);
 
   return (
     <>
