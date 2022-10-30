@@ -59,7 +59,7 @@ function App() {
               <Typography variant="h3">Player 1</Typography>
             </Grid>
             <Grid item xs={4}>
-              <Typography variant="h3">Cricket</Typography>
+              <Typography variant="h3">-------</Typography>
             </Grid>
             <Grid item xs={4}>
               <Typography variant="h3">Player 2</Typography>
