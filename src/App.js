@@ -43,6 +43,7 @@ function App() {
               align="center"
               variant="h3"
               component="div"
+              backgroundColor="secondary.light"
             >
               Simple Cricket Scoreboard
             </Typography>
