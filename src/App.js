@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import {
   AppBar,
@@ -8,11 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
-// import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-// import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import Row from "./Row";
-
-import { useState } from "react";
+import ScoreBoardHeaderFooter from "./ScoreboardComponents/ScoreBoardHeaderFooter";
+import Row from "./ScoreboardComponents/Row";
 
 function App() {
   const [playerOneTotal, setPlayerOneTotal] = useState(0);
@@ -43,7 +41,7 @@ function App() {
               align="center"
               variant="h3"
               component="div"
-              backgroundColor="secondary.light"
+              backgroundColor="tertiary.light"
             >
               Simple Cricket Scoreboard
             </Typography>
@@ -56,15 +54,11 @@ function App() {
               color: "white",
             }}
           >
-            <Grid item xs={4}>
-              <Typography variant="h3">Player 1</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography variant="h3">-------</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography variant="h3">Player 2</Typography>
-            </Grid>
+            <ScoreBoardHeaderFooter
+              columnOne="Player 1"
+              columnTwo="--------"
+              columnThree="Player 2"
+            />
 
             {numbers.map((number) => (
               <Row
@@ -78,15 +72,11 @@ function App() {
               />
             ))}
 
-            <Grid item xs={4}>
-              <Typography variant="h3">{playerOneTotal}</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography variant="h3">Totals</Typography>
-            </Grid>
-            <Grid item xs={4}>
-              <Typography variant="h3">{playerTwoTotal}</Typography>
-            </Grid>
+            <ScoreBoardHeaderFooter
+              columnOne={playerOneTotal}
+              columnTwo="Totals"
+              columnThree={playerTwoTotal}
+            />
           </Grid>
 
           <BottomNavigation
@@ -96,19 +86,11 @@ function App() {
               marginTop: 5,
             }}
           >
-            {/* <BottomNavigationAction
-            label="Back"
-            icon={<ArrowBackIcon color="tertiary" fontSize="large" />}
-          /> */}
             <BottomNavigationAction
               onClick={resetGame}
               label="Reset"
               icon={<RestartAltIcon color="tertiary" fontSize="large" />}
             />
-            {/* <BottomNavigationAction
-            label="Share"
-            icon={<ArrowForwardIcon color="tertiary" fontSize="large" />}
-          /> */}
           </BottomNavigation>
         </Box>
       </Box>
