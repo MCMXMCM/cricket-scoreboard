@@ -1,13 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import {
-  AppBar,
-  Grid,
-  Box,
-  BottomNavigation,
-  BottomNavigationAction,
-  Typography,
-} from "@mui/material";
+import { AppBar, Grid, Box, Typography, Button } from "@mui/material";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import ScoreBoardHeaderFooter from "./ScoreboardComponents/ScoreBoardHeaderFooter";
 import Row from "./ScoreboardComponents/Row";
@@ -37,9 +30,9 @@ function App() {
         >
           <AppBar position="static">
             <Typography
-              sx={{ marginTop: "1em, 0" }}
+              sx={{ marginTop: "1vh", marginBottom: "1vh" }}
               align="center"
-              variant="h3"
+              variant="h4"
               component="div"
               backgroundColor="tertiary.light"
             >
@@ -48,18 +41,28 @@ function App() {
           </AppBar>
           <Grid
             container
-            spacing={1}
+            columnSpacing={0}
+            rowSpacing={0}
             sx={{
               textAlign: "center",
               color: "white",
             }}
           >
             <ScoreBoardHeaderFooter
-              columnOne="Player 1"
-              columnTwo="--------"
-              columnThree="Player 2"
+              columnOne={playerOneTotal}
+              columnTwo={
+                <Button
+                  sx={{
+                    backgroundColor: "secondary.dark",
+                    color: "white",
+                  }}
+                  onClick={resetGame}
+                >
+                  <RestartAltIcon color="tertiary" fontSize="large" />
+                </Button>
+              }
+              columnThree={playerTwoTotal}
             />
-
             {numbers.map((number) => (
               <Row
                 number={number}
@@ -71,27 +74,7 @@ function App() {
                 setResetClicker={setResetClicker}
               />
             ))}
-
-            <ScoreBoardHeaderFooter
-              columnOne={playerOneTotal}
-              columnTwo="Totals"
-              columnThree={playerTwoTotal}
-            />
           </Grid>
-
-          <BottomNavigation
-            sx={{
-              backgroundColor: "secondary.dark",
-              color: "white",
-              marginTop: 5,
-            }}
-          >
-            <BottomNavigationAction
-              onClick={resetGame}
-              label="Reset"
-              icon={<RestartAltIcon color="tertiary" fontSize="large" />}
-            />
-          </BottomNavigation>
         </Box>
       </Box>
     </div>

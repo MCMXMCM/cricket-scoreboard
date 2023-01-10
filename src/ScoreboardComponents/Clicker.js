@@ -41,7 +41,7 @@ const Clicker = ({
     <>
       <Grid item xs={4}>
         <Button onClick={handleClick} color="tertiary" fullWidth variant="text">
-          <Typography variant="h3">{buttonChangeView(clickCount)}</Typography>
+          <Typography variant="h1">{buttonChangeView(clickCount)}</Typography>
         </Button>
       </Grid>
     </>

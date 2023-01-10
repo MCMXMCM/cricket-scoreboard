@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Typography } from "@mui/material";
+import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
+import AdjustOutlinedIcon from "@mui/icons-material/AdjustOutlined";
+import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";
 import Clicker from "./Clicker";
 
 const Row = ({
@@ -18,21 +21,21 @@ const Row = ({
   const buttonChangeView = (clickCount) => {
     if (playerOneFull && playerTwoFull) {
       setRowClosed(true);
-      return "closed";
+      return "🚫";
     }
     switch (clickCount) {
       case -1:
-        return "closed";
+        return "🚫";
       case 0:
-        return "O";
+        return <CircleOutlinedIcon sx={{ fontSize: "16vw" }} />;
       case 1:
-        return "!";
+        return <AdjustOutlinedIcon sx={{ fontSize: "16vw" }} />;
       case 2:
-        return "!!";
+        return <AddCircleOutlineOutlinedIcon sx={{ fontSize: "16vw" }} />;
       case 3:
-        return "!!!";
+        return "💰";
       default:
-        return "!!!";
+        return "💰";
     }
   };
 
@@ -58,7 +61,7 @@ const Row = ({
         setRowClosed={setRowClosed}
       />
       <Grid item xs={4}>
-        <Typography variant="h3">{number}</Typography>
+        <Typography variant="h1">{number}</Typography>
       </Grid>
       <Clicker
         number={number}
