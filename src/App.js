@@ -20,17 +20,17 @@ function App() {
 
   return (
     <div className="App">
-      <Box height="100vh" backgroundColor="secondary.dark">
-        <Box
-          height="90vh"
-          display="flex"
-          justifyContent="center"
-          flexDirection="column"
-          backgroundColor="secondary.dark"
-        >
+      <Box
+        display="flex"
+        alignItems="center"
+        alignContent="center"
+        justifyContent="center"
+        height="100vh"
+        backgroundColor="secondary.dark"
+      >
+        <Box maxWidth="600px" maxHeight="900px">
           <AppBar position="static">
             <Typography
-              sx={{ marginTop: "1vh", marginBottom: "1vh" }}
               align="center"
               variant="h4"
               component="div"
@@ -40,24 +40,16 @@ function App() {
             </Typography>
           </AppBar>
           <Grid
+            textAlign="center"
+            color="white"
+            display="flex"
+            alignItems="center"
             container
-            columnSpacing={0}
-            rowSpacing={0}
-            sx={{
-              textAlign: "center",
-              color: "white",
-            }}
           >
             <ScoreBoardHeaderFooter
               columnOne={playerOneTotal}
               columnTwo={
-                <Button
-                  sx={{
-                    backgroundColor: "secondary.dark",
-                    color: "white",
-                  }}
-                  onClick={resetGame}
-                >
+                <Button onClick={resetGame}>
                   <RestartAltIcon color="tertiary" fontSize="large" />
                 </Button>
               }

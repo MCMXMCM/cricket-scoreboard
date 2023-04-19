@@ -27,11 +27,11 @@ const Row = ({
       case -1:
         return "🚫";
       case 0:
-        return <CircleOutlinedIcon sx={{ fontSize: "16vw" }} />;
+        return <CircleOutlinedIcon fontSize="large" />;
       case 1:
-        return <AdjustOutlinedIcon sx={{ fontSize: "16vw" }} />;
+        return <AdjustOutlinedIcon fontSize="large" />;
       case 2:
-        return <AddCircleOutlineOutlinedIcon sx={{ fontSize: "16vw" }} />;
+        return <AddCircleOutlineOutlinedIcon fontSize="large" />;
       case 3:
         return "💰";
       default:
@@ -61,7 +61,7 @@ const Row = ({
         setRowClosed={setRowClosed}
       />
       <Grid item xs={4}>
-        <Typography variant="h1">{number}</Typography>
+        <Typography variant="h2">{number}</Typography>
       </Grid>
       <Clicker
         number={number}
